@@ -8,6 +8,14 @@ This repository provides scripts, including preprocessing and training, for our 
 ## What's New
 * [01/07/2022] Release reproduction scripts. Note: Currently, we don't have a plan to release the pretrained models.
 
+## Quick Links
+
+  - [Installation](#installation)
+  - [Preparation](#preparation)
+  - [Train on Parallel Data](#train-on-parallel-data)
+  - [Citation](#citation)
+
+
 ## Installation
 The installation instruction borrowed from [fairseq](https://github.com/facebookresearch/fairseq)
 * Clone our repository
@@ -73,16 +81,16 @@ We mainly show how to process the data of small task #2. For the data of small t
   cd ..
   ```
   
-## Train Models on Parallel Data
+## Train on Parallel Data
 All training scripts are in train_scripts
 ```bash
 cd train_scripts
 bash train_615m_for_smallTask2_parallelData.sh
 ```
-Here we list the number of GPUs used for each script.
+Here we list the number of GPUs used for each script. If you don't have enough GPUs, just change the flag --update-freq to match our setting.
 
 |              Script              | #GPU | 
-|:-------------------------------|:--------:|
+|:-------------------------------:|:--------:|
 | train_615m_for_smallTask2_parallelData.sh |  40 |
 
 
