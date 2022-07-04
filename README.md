@@ -17,7 +17,7 @@ This repository provides scripts, including preprocessing and training, for our 
 
 
 ## Installation
-The installation instruction borrowed from [fairseq](https://github.com/facebookresearch/fairseq)
+The installation instruction borrowed from [fairseq](https://github.com/facebookresearch/fairseq). In case of version problem, we offer the fairseq we trained with.
 * Clone our repository
   ```bash
   git clone https://github.com/BaohaoLiao/multiback.git
@@ -27,7 +27,6 @@ The installation instruction borrowed from [fairseq](https://github.com/facebook
 * Python >= 3.6
 * Install fairseq and develop locally
   ```bash
-  git clone https://github.com/pytorch/fairseq
   cd fairseq
   pip install --editable ./
   cd ..
@@ -48,12 +47,16 @@ We mainly show how to process the data of small task #2. For the data of small t
   ```bash
   mkdir pretrained_models
   cd pretrained_models
-  # https://dl.fbaipublicfiles.com/flores101/pretrained_models/flores101_mm100_175M.tar.gz for flores101_mm100_175M	 
   wget https://dl.fbaipublicfiles.com/flores101/pretrained_models/flores101_mm100_615M.tar.gz 
   tar -zxvf flores101_mm100_615M.tar.gz
   rm flores101_mm100_615M.tar.gz
   cd ..
   ```
+  |   Pretrained Model (name in our paper) | Original Name | Download |
+  |:----------------------:|:--------------:|:---------:|
+  | Trans_small |  flores101_mm100_175M | https://dl.fbaipublicfiles.com/flores101/pretrained_models/flores101_mm100_175M.tar.gz |
+  | Trans_base | flores101_mm100_615M | https://dl.fbaipublicfiles.com/flores101/pretrained_models/flores101_mm100_615M.tar.gz |
+  | Trans_big | m2m_100 |  https://dl.fbaipublicfiles.com/m2m_100/1.2B_last_checkpoint.pt |
 * Download datasets.
   ```bash
   mkdir data
@@ -73,27 +76,33 @@ We mainly show how to process the data of small task #2. For the data of small t
   ```bash
   cd data_scripts
   # process evaluation set
-  bash process_evaluationSet_for_smallTask2.sh
+  bash processEvaluationSetForSmallTask2.sh
   
   # process training set
   python concatenate.py # Concatenate the files with the same translation directions
-  bash process_trainSet_for_smallTask2.sh
+  bash processTrainSetForSmallTask2.sh
   cd ..
   ```
+  Note: For Trans_big, you need to process data like https://github.com/facebookresearch/fairseq/tree/main/examples/m2m_100
   
 ## Train on Parallel Data
 All training scripts are in train_scripts
 ```bash
 cd train_scripts
-bash train_615m_for_smallTask2_parallelData.sh
+bash transBaseForSmallTask2ParallelData.sh
 ```
 Here we list the number of GPUs used for each script. If you don't have enough GPUs, just change the flag --update-freq to match our setting.
 
-|              Script              | #GPU | 
-|:-------------------------------:|:--------:|
-| train_615m_for_smallTask2_parallelData.sh |  40 |
+| Task | Model | Script | #GPU | 
+|:-------:|:--------:|:-------:|:--------:|
+| Small Task #2 | Trans_small |  transSmallForSmallTask2ParallelData.sh | 32 |
+| Small Task #2 | Trans_base  | transBaseForSmallTask2ParallelData.sh |  32 |
+| Small Task #2 | Trans_big  | transBigForSmallTask2ParallelData.sh | 128 |
 
-
+## Back-translation
+* You can download the monolingual data [here](https://data.statmt.org/wmt21/multilingual-task/). We don't recommend to use all monolingual data (See Figure 1 in the paper).
+* Process monolingual data and generate synthetic data by following https://github.com/facebookresearch/fairseq/tree/main/examples/backtranslation. All three sampling methods are also shown there.
+* Combine the parallel data and synthesized data together and retrain the model with above scripts for extra one epoch.
 
 ## Citation
 Please cite as:
