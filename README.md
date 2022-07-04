@@ -93,13 +93,13 @@ All training scripts are in train_scripts
 cd train_scripts
 bash transBaseForSmallTask2ParallelData.sh
 ```
-Here we list the number of GPUs used for each script. If you don't have enough GPUs, just change the flag --update-freq to match our setting.
+Here we list the number of GPUs used for each script. If you don't have enough GPUs, just change the flag --update-freq to match our setting. We don't really tune the hyper-parameters and mainly borrow them from fairseq examples. 
 
-| Task | Model | Script | #GPU | 
-|:-------:|:--------:|:-------:|:--------:|
-| Small Task #2 | Trans_small |  transSmallForSmallTask2ParallelData.sh | 32 |
-| Small Task #2 | Trans_base  | transBaseForSmallTask2ParallelData.sh |  32 |
-| Small Task #2 | Trans_big  | transBigForSmallTask2ParallelData.sh | 128 |
+| Task | Model | Script | #GPU |  #epoch |
+|:-------:|:--------:|:-------:|:--------:|:---------:|
+| Small Task #2 | Trans_small |  transSmallForSmallTask2ParallelData.sh | 32 | 1 |
+| Small Task #2 | Trans_base  | transBaseForSmallTask2ParallelData.sh |  32 | 2 |
+| Small Task #2 | Trans_big  | transBigForSmallTask2ParallelData.sh | 128 | 2 | 
 
 ## Back-translation
 * You can download the monolingual data [here](https://data.statmt.org/wmt21/multilingual-task/). We don't recommend to use all monolingual data (See Figure 1 in the paper).

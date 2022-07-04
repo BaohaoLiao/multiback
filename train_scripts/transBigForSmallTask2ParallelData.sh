@@ -32,7 +32,7 @@ python $TOOL \
     --max-tokens 1024 --max-tokens-valid 1024 \
     --min-loss-scale 0.0001 \
     --save-interval 1 --save-interval-updates 3000 --keep-interval-updates 5 \
-    --max-epoch 1 \
+    --max-epoch 2 \
     --seed 222 \
     --no-progress-bar --log-format simple --log-interval 100 \
     --save-dir $SAVE_DIR/checkpoints  \
