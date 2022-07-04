@@ -27,6 +27,7 @@ The installation instruction borrowed from [fairseq](https://github.com/facebook
 * Python >= 3.6
 * Install fairseq and develop locally
   ```bash
+  git clone https://github.com/pytorch/fairseq
   cd fairseq
   pip install --editable ./
   cd ..
