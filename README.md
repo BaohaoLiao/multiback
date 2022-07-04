@@ -13,6 +13,7 @@ This repository provides scripts, including preprocessing and training, for our 
   - [Installation](#installation)
   - [Preparation](#preparation)
   - [Train on Parallel Data](#train-on-parallel-data)
+  - [Back-translation](#back-translation)
   - [Citation](#citation)
 
 
