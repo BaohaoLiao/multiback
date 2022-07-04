@@ -6,7 +6,7 @@ This repository provides scripts, including preprocessing and training, for our 
 * We explored various methods for multilingual machine translation, including sampling methods for back-translation, vocabulary size and the amount of synthetic data.
 
 ## What's New
-* [01/07/2022] Release reproduction scripts. Note: Currently, we don't have a plan to release the pretrained models.
+* [01/07/2022] Release reproduction scripts for Small Task #2 (We use almost the same scripts for #1). Note: Currently, we don't have a plan to release the pretrained models.
 
 ## Quick Links
 
