@@ -2,11 +2,11 @@
 
 ENCODE=../fairseq/scripts/spm_encode.py
 MODEL=../pretrained_models/flores101_mm100_615M/sentencepiece.bpe.model
-DATA_PATH=../data/small_task2_filt_concat  # TODO
-SAVE_DIR=../data/small_task2_bin  # TODO
+DATA_PATH=../data/small_task2_filt_concat  # TODO: change to the raw data directory for small task #1
+SAVE_DIR=../data/small_task2_bin  # TODO: change to the directory where you want to save for small task #1
 DICT=../pretrained_models/flores101_mm100_615M/dict.txt
 
-LANGS=(  # TODO
+LANGS=(  # TODO: change to the languages of small task #1
     "en"
     "id"
     "jv"

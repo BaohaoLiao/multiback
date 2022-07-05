@@ -13,6 +13,7 @@ This repository provides scripts, including preprocessing and training, for our 
   - [Installation](#installation)
   - [Preparation](#preparation)
   - [Train on Parallel Data](#train-on-parallel-data)
+  - [Generation and Evaluation](#generation--evaluation)
   - [Back-translation](#back-translation)
   - [Citation](#citation)
 
@@ -31,7 +32,6 @@ The installation instruction borrowed from [fairseq](https://github.com/facebook
   git clone https://github.com/pytorch/fairseq
   cd fairseq
   pip install --editable ./
-  cd ..
   ```
 * For faster training, install NVIDIA's apex:
   ```bash
@@ -52,7 +52,6 @@ We mainly show how to process the data of small task #2. For the data of small t
   wget https://dl.fbaipublicfiles.com/flores101/pretrained_models/flores101_mm100_615M.tar.gz 
   tar -zxvf flores101_mm100_615M.tar.gz
   rm flores101_mm100_615M.tar.gz
-  cd ..
   ```
   |   Pretrained Model (name in our paper) | Original Name | Download |
   |:----------------------:|:--------------:|:---------:|
@@ -72,7 +71,6 @@ We mainly show how to process the data of small task #2. For the data of small t
   wget https://data.statmt.org/wmt21/multilingual-task/small_task2_filt_v2.tar.gz
   tar -xzvf small_task2_filt_v2.tar.gz
   rm small_task2_filt_v2.tar.gz
-  cd ..
   ```
 * Process parallel data
   ```bash
@@ -83,7 +81,6 @@ We mainly show how to process the data of small task #2. For the data of small t
   # process training set
   python concatenate.py # Concatenate the files with the same translation directions
   bash processTrainSetForSmallTask2.sh
-  cd ..
   ```
   Note: For Trans_big, you need to process data like https://github.com/facebookresearch/fairseq/tree/main/examples/m2m_100
   
@@ -100,6 +97,20 @@ Here we list the number of GPUs used for each script. If you don't have enough G
 | Small Task #2 | Trans_small |  transSmallForSmallTask2ParallelData.sh | 32 | 1 |
 | Small Task #2 | Trans_base  | transBaseForSmallTask2ParallelData.sh |  32 | 2 |
 | Small Task #2 | Trans_big  | transBigForSmallTask2ParallelData.sh | 128 | 2 | 
+
+
+## Generation & Evaluation
+* SentencePiece BLUE is used for evaluating the generated sentences. To apply it, you need to install a specific branch sacrebleu like:
+  ```bash
+  git clone --single-branch --branch adding_spm_tokenized_bleu https://github.com/ngoyal2707/sacrebleu.git
+  cd sacrebleu
+  python setup.py install
+  ```
+* Generation and evaluation in one file
+  ```bash
+  cd generationAndEvaluation_scripts
+  bash generateAndEvaluateForSmallTask2.sh
+  ```
 
 ## Back-translation
 * You can download the monolingual data [here](https://data.statmt.org/wmt21/multilingual-task/). We don't recommend to use all monolingual data (See Figure 1 in the paper).

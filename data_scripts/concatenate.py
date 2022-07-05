@@ -1,8 +1,8 @@
 import os
 
 if __name__ == "__main__":
-    data_dir = "../data/small_task2_filt"  # TODO
-    save_dir = "../data/small_task2_filt_concat" # TODO
+    data_dir = "../data/small_task2_filt"  # TODO: change to the directory where you save raw data for small task #1
+    save_dir = "../data/small_task2_filt_concat" # TODO: change to the directory where you want to save for small task #1
 
     prefix = []
     lang_pairs = []

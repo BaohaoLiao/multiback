@@ -4,12 +4,12 @@ ENCODE=../fairseq/scripts/spm_encode.py
 MODEL=../pretrained_models/flores101_mm100_615M/sentencepiece.bpe.model
 DEV_PATH=../data/flores101_dataset/dev
 DEVTEST_PATH=../data/flores101_dataset/devtest
-SAVE_DIR=../data/small_task2_bin  # TODO
+SAVE_DIR=../data/small_task2_bin  # TODO: change to the directory for small task #1
 DICT=../pretrained_models/flores101_mm100_615M/dict.txt
 
 mkdir $SAVE_DIR
 
-LANGS=(  #TODO
+LANGS=(  #TODO: change to the languages for small task #1
     "en"
     "id"
     "jv"
@@ -17,7 +17,7 @@ LANGS=(  #TODO
     "ta"
     "tl"
 )
-CODES=(  # TODO
+CODES=(  # TODO: change to the languages for small task #1
     "eng"
     "ind"
     "jav"
